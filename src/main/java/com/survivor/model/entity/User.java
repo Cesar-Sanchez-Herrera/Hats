@@ -1,31 +1,15 @@
 package com.survivor.model.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
-import org.springframework.data.repository.NoRepositoryBean;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name="users")
+@Table(name="user")
 public class User implements Serializable {
 	
 	
@@ -33,35 +17,26 @@ public class User implements Serializable {
 	
 	@Id
 	@GeneratedValue
-	private Integer id;
+	private Integer user_id;
 	
-	@NotEmpty
-	@Size(min = 4)
-	@Column(name="name", nullable = false)
+	private String username;
 	private String name;
-	
-	@NotEmpty
-	@Column(name="lastname")
-	private String lastname;
-	
-	@Email
-	@NotEmpty
-	@Column(name="email", nullable= false, unique = true)
+	private String last_name;
 	private String email;
+	private String password;
 	
-	@NotNull(message="no puede estar vacio")
-	@Column(name="created_at")
-	@Temporal(TemporalType.DATE)
-	@JsonFormat(shape = JsonFormat.Shape.STRING, locale = "es-MX", timezone = "America/Mexico_City")
-	private Date createdAt;
 	
-	private String foto;
-	
-	public Integer getId() {
-		return id;
+	public Integer getUser_id() {
+		return user_id;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setUser_id(Integer user_id) {
+		this.user_id = user_id;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getName() {
 		return name;
@@ -69,11 +44,11 @@ public class User implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getLastname() {
-		return lastname;
+	public String getLast_name() {
+		return last_name;
 	}
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
 	}
 	public String getEmail() {
 		return email;
@@ -81,22 +56,14 @@ public class User implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getCreatedAt() {
-		return createdAt;
+	public String getPassword() {
+		return password;
 	}
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-	public String getFoto() {
-		return foto;
-	}
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
-
-
+	
+	
+	
 }
