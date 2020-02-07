@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="Publicaciones")
+@Table(name ="publicaciones")
 public class Publicaciones implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -31,6 +31,8 @@ public class Publicaciones implements Serializable{
 	
 	private Date fecha_publicacion;
 
+	private String publicacion;
+	
 	public Integer getPublicaciones_id() {
 		return publicaciones_id;
 	}
@@ -62,10 +64,13 @@ public class Publicaciones implements Serializable{
 	public void setFecha_publicacion(Date fecha_publicacion) {
 		this.fecha_publicacion = fecha_publicacion;
 	}
-	
-	
-	
-	
-	
+
+	public String getPublicacion() {
+		return publicacion;
+	}
+
+	public void setPublicacion(String publicacion) {
+		this.publicacion = publicacion;
+	}
 	
 }
