@@ -37,6 +37,9 @@ import com.hats.model.entity.UserArtista;
 import com.hats.model.service.IUserArtistaService;
 import com.hats.model.service.IUserService;
 
+//Controlador REST de Usuarios Artistas//
+
+
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
@@ -48,26 +51,32 @@ public class UserArtistaRestController {
 	@Autowired
 	public IUserArtistaService userArtistaService;
 
+	
+	//Metodo GET para obtener a todas los usuarios artistas guardadoss en la base de datos//
 	@GetMapping (value = "/usersartistas", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<UserArtista> getUserArtistaList(){
 		return userArtistaService.getAllUserArtistas();		
 	}
 
+	//Metodo GET para obtener un solo usuario artista de la base de datos//
 	@GetMapping (value = "/userartista/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public UserArtista getUserArtistaById(@PathVariable ("id") Integer id){
 		return userArtistaService.getUserArtistaById(id);		
 	}
 	
+	//Metodo POST para añadir un usuario artista//
 	@PostMapping(value = "/userartistaadd", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public UserArtista addUserArtista(@RequestBody UserArtista requestBody) {
 		return userArtistaService.addUserArtista(requestBody);
 	}
 	
+	//Metodo PUT para modificar los datos de un usuario artista//
 	@PutMapping(value = "/userartista/{id}/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public UserArtista updateUserArtista(@PathVariable("id") String id, @RequestBody UserArtista requestBody){
 		return userArtistaService.updateUserArtista(requestBody);
 	}
 	
+	//Metodo DELETE para borrar un usuario artista//
 	@DeleteMapping(value = "/delete/userartista/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public void deleteUserArtista(@PathVariable("id") Integer id) {
 		userArtistaService.deleteUserArtistaById(id);

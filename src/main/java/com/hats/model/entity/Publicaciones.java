@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+//Entidad de Publicaciones con todos sus campos//
+
 @Entity
 @Table(name ="publicaciones")
 public class Publicaciones implements Serializable{

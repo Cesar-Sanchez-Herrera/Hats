@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import com.hats.model.entity.Cancion;
 import com.hats.model.entity.Publicaciones;
 
+//Servicio de Publicaciones//
+
 public interface IPublicacionesService {
 	
 	public List<Publicaciones> getAllPublicaciones();

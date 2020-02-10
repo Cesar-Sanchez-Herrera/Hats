@@ -39,6 +39,9 @@ import com.hats.model.service.ICancionService;
 import com.hats.model.service.IUserArtistaService;
 import com.hats.model.service.IUserService;
 
+//Controlador REST de Canciones//
+
+
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
@@ -50,26 +53,32 @@ public class CancionesRestController {
 	@Autowired
 	public ICancionService cancionService;
 
+	
+	//Metodo GET para obtener a todas las canciones guardadas en la base de datos//
 	@GetMapping (value = "/canciones", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Cancion> getCancionesList(){
 		return cancionService.getAllCanciones();		
 	}
-
+	
+	//Metodo GET para obtener una sola cancion de la base de datos//
 	@GetMapping (value = "/cancion/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Cancion getCancionById(@PathVariable ("id") Integer id){
 		return cancionService.getCancionById(id);		
 	}
 	
+	//Metodo POST para añadir una cancion//
 	@PostMapping(value = "/cancionadd", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Cancion addCancion(@RequestBody Cancion requestBody) {
 		return cancionService.addCancion(requestBody);
 	}
 	
+	//Metodo PUT para modificar los datos de una cancion//
 	@PutMapping(value = "/cancion/{id}/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Cancion updateCancionArtista(@PathVariable("id") String id, @RequestBody Cancion requestBody){
 		return cancionService.updateCancion(requestBody);
 	}
 	
+	//Metodo DELETE para borrar una cancion//
 	@DeleteMapping(value = "/delete/cancion/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public void deleteCancion(@PathVariable("id") Integer id) {
 		cancionService.deleteCancionById(id);

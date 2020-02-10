@@ -7,6 +7,8 @@ import org.springframework.data.domain.Pageable;
 
 import com.hats.model.entity.Album;
 
+//Servicio de Album//
+
 public interface IAlbumService {
 	
 	public List<Album> getAllAlbums();

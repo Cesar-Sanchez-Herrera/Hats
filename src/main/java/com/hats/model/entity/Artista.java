@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+//Entidad de Artista con todos sus campos//
+
 @Entity
 @Table(name ="artista")
 public class Artista implements Serializable{

@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import com.hats.model.entity.Album;
 import com.hats.model.entity.Artista;
 
+//Servicio de Artista//
+
 public interface IArtistaService {
 	
 	public List<Artista> getAllArtistas();

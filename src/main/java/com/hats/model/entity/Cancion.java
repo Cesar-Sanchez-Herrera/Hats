@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+//Entidad de Cancion con todos sus campos//
+
 @Entity
 @Table(name ="cancion")
 public class Cancion implements Serializable{

@@ -13,33 +13,40 @@ import com.hats.model.entity.Artista;
 import com.hats.model.entity.Cancion;
 import com.hats.model.entity.Publicaciones;
 
+//Implementacion de servicio de Cancion//
+
 @Service
 public class CancionServiceImpl implements ICancionService {
 
 	@Autowired
 	private ICancionDAO cancionDAO;
 
+	//Obtener todas las canciones//
 	@Override
 	public List<Cancion> getAllCanciones() {
 		return (List<Cancion>) cancionDAO.findAll();
 	}
 
+	//Obtener una cancion por id//
 	@Override
 	public Cancion getCancionById(Integer id) {
 		Cancion cancion = this.cancionDAO.findById(id).orElse(null);
 		return cancion;
 	}
 
+	//Añadir una cancion//
 	@Override
 	public Cancion addCancion(Cancion cancion) {
 		return this.cancionDAO.save(cancion);
 	}
 
+	//Modificar una cancion//
 	@Override
 	public Cancion updateCancion(Cancion cancion) {
 		return cancionDAO.save(cancion);	
 	}
 
+	//Borrar una cancion//
 	@Override
 	public boolean deleteCancionById(Integer id) {
 		this.cancionDAO.deleteById(id);

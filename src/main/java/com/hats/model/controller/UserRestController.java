@@ -35,6 +35,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.hats.model.entity.User;
 import com.hats.model.service.IUserService;
 
+//Controlador REST de Usuarios//
+
+
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
@@ -46,26 +49,32 @@ public class UserRestController {
 	@Autowired
 	public IUserService userService;
 
+	
+	//Metodo GET para obtener a todas los usuarios guardadoss en la base de datos//
 	@GetMapping (value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<User> getUserList(){
 		return userService.getAllUsers();		
 	}
 
+	//Metodo GET para obtener un solo usuario de la base de datos//
 	@GetMapping (value = "/user/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public User getUserById(@PathVariable ("id") Integer id){
 		return userService.getUserById(id);		
 	}
 	
+	//Metodo POST para añadir un usuario//
 	@PostMapping(value = "/useradd", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public User addUser(@RequestBody User requestBody) {
 		return userService.addUser(requestBody);
 	}
 	
+	//Metodo PUT para modificar los datos de un usuario//
 	@PutMapping(value = "/user/{id}/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public User updateUser(@PathVariable("id") String id, @RequestBody User requestBody){
 		return userService.updateUser(requestBody);
 	}
 	
+	//Metodo DELETE para borrar un usuario//
 	@DeleteMapping(value = "/delete/user/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public void deleteUser(@PathVariable("id") Integer id) {
 		userService.deleteUserById(id);

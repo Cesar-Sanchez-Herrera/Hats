@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+//Entidad de Usuario con todos sus campos//
 
 @Entity
 @Table(name="user")

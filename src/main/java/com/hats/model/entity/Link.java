@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+//Entidad de Link con todos sus campos//
 
 @Entity
 @Table(name="Link")

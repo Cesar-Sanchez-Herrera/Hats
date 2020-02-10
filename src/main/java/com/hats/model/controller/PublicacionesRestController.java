@@ -37,6 +37,9 @@ import com.hats.model.entity.User;
 import com.hats.model.service.IPublicacionesService;
 import com.hats.model.service.IUserService;
 
+//Controlador REST de Publicaciones//
+
+
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
@@ -48,26 +51,32 @@ public class PublicacionesRestController {
 	@Autowired
 	public IPublicacionesService publicacionesService;
 
+	
+	//Metodo GET para obtener a todas las publicaciones guardadas en la base de datos//
 	@GetMapping (value = "/publicaciones", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Publicaciones> getPublicacionesList(){
 		return publicacionesService.getAllPublicaciones();		
 	}
 
+	//Metodo GET para obtener una sola publicacion de la base de datos//
 	@GetMapping (value = "/publicacion/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Publicaciones getPublicacionById(@PathVariable ("id") Integer id){
 		return publicacionesService.getPublicacionById(id);		
 	}
 	
+	//Metodo POST para añadir una publicacion//
 	@PostMapping(value = "/publicacionadd", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Publicaciones addPublicacion(@RequestBody Publicaciones requestBody) {
 		return publicacionesService.addPublicacion(requestBody);
 	}
 	
+	//Metodo PUT para modificar los datos de una publicacion//
 	@PutMapping(value = "/publicacion/{id}/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Publicaciones updatePublicacion(@PathVariable("id") String id, @RequestBody Publicaciones requestBody){
 		return publicacionesService.updatePublicacion(requestBody);
 	}
 	
+	//Metodo DELETE para borrar una publicacion//
 	@DeleteMapping(value = "/delete/publicacion/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public void deletePublicacion(@PathVariable("id") Integer id) {
 		publicacionesService.deletePublicacionById(id);
